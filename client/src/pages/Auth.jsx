@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaRobot } from "react-icons/fa6";
+import {IoSparkles} from "react-icons/io5";
 
 function Auth() {
   return (
@@ -12,6 +13,12 @@ function Auth() {
           </div>
           <h2 className='font-semibold text-lg'>InterviewIQ.AI</h2>
         </div>
+        <h1 className='text-2xl md:text-3xl font-semibold text-center leading-snug mb-4'>Continoue with
+          <span className='bg-green-100 text-green-600 px-3 py-1 rounded-full inline-flex items-center gap-2'>
+            <IoSparkles size={16} />
+            AI Smart Interview
+          </span>
+        </h1>
       </div>
     </div>
   )
