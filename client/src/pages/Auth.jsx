@@ -3,8 +3,20 @@ import { FaRobot } from "react-icons/fa6";
 import {IoSparkles} from "react-icons/io5";
 import {motion} from "motion/react";
 import {FcGoogle} from "react-icons/fc";
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../utils/firebase';
 
 function Auth() {
+
+  const handleGoogleAuth  = async () => {
+    try {
+      const response = await signInWithPopup(auth,provider)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='w-full min-h-screen bg[#f3f3f3] flex items-center justify-center px-6 py-20'>
       <motion.div 
