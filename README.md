@@ -140,7 +140,7 @@ This project is licensed under the MIT License.
 
 👨‍💻 Author
 
-Kulbhushan Kumar
+Kundan Kumar
 
 GitHub
 https://github.com/Kundank8789
