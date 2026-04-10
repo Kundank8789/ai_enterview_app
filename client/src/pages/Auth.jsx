@@ -1,17 +1,22 @@
 import React from 'react'
 import { FaRobot } from "react-icons/fa6";
 import {IoSparkles} from "react-icons/io5";
-import {motion} from "motion/react";
+import { motion } from "framer-motion";
 import {FcGoogle} from "react-icons/fc";
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../utils/firebase';
-
+import axios from 'axios';
+import { ServerUrl } from '../App';
 function Auth() {
 
   const handleGoogleAuth  = async () => {
     try {
       const response = await signInWithPopup(auth,provider)
-      console.log(response)
+      let User=response.user
+      let name = User.displayName
+      let email = User.email
+      const result = await axios.post(ServerUrl + "/api/auth/google", {name, email}, {withCredentials:true})
+        console.log(result.data)
     } catch (error) {
       console.log(error)
     }
@@ -40,6 +45,7 @@ function Auth() {
         <p className='text-gray-500 text-center text-sm md:text-base leading-relaxed mb-8'>Sign in to start AI-Powered mock interviews, track your progress, and unlock detailed performance insights.</p>
 
         <motion.button
+        onClick={handleGoogleAuth}
         whileHover={{ opacity: 0.9, scale: 1.03 }}
         whileTap={{ opacity: 1, scale: 0.98 }}
          className='w-full flex items-center justify-center gap-3 py-3 bg-black text-white rounded-full shadow-md'>
